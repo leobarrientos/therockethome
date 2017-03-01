@@ -13,7 +13,7 @@ public class TheRocketHomeController {
 	public String sayHello(ModelMap model) {
 		model.addAttribute("title", "TheRocket.cl!!!");
 		model.addAttribute("greeting", "Hola Bienvenidos al Mundo TheRocket.cl!!!");
-		return "welcome";
+		return "welcome2";
 	}
 
 }
