@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
 
 
 @Configuration
@@ -18,6 +19,12 @@ public class EmailConfig {
 	private String host;
 	@Value(value = "${mailSender.Port}")
 	private String port;
+	
+	@Value(value = "${mailSender.Username}")
+	private String username;
+	
+	@Value(value = "${mailSender.Password}")
+	private String password;
 
 	@Bean
 	public JavaMailSender getMailSender(){
@@ -25,8 +32,8 @@ public class EmailConfig {
 		//Using Gmail SMTP configuration.
 		mailSender.setHost(host);
 		mailSender.setPort(new Integer(port).intValue());
-		mailSender.setUsername("tu_email@gmail.com");
-		mailSender.setPassword("tu_password");
+		mailSender.setUsername(username);
+		mailSender.setPassword(password);
 
 		Properties javaMailProperties = new Properties();
 		javaMailProperties.put("mail.smtp.starttls.enable", "true");
@@ -39,4 +46,14 @@ public class EmailConfig {
 		mailSender.setJavaMailProperties(javaMailProperties);
 		return mailSender;
 	}
+	
+	 /*
+     * FreeMarker configuration.
+     */
+    @Bean
+    public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration() {
+        FreeMarkerConfigurationFactoryBean bean = new FreeMarkerConfigurationFactoryBean();
+        bean.setTemplateLoaderPath("/fmtemplates/");
+        return bean;
+    }
 }

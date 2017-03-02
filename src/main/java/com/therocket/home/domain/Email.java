@@ -1,4 +1,4 @@
-package com.therocket.home.email;
+package com.therocket.home.domain;
 
 import org.springframework.stereotype.Component;
 

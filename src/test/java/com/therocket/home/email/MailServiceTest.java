@@ -13,6 +13,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.therocket.home.domain.Email;
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,13 +34,13 @@ public class MailServiceTest {
 	@Test
 	public void enviarEmail(){
 		Email email = new Email();
-		
+		email.setFrom("leobarrientos@gmail.com");
 		email.setBody("Hola desde el mundo TheRocket!");
 		email.setSubject("Test therocket.cl");
 		String[] to = {"leobarrientos@gmail.com"};
 		email.setTo(to);
 		
-		mailSvc.sendEmail(email);
+		mailSvc.sendContactEmail(email);
 		
 	}
 
