@@ -32,6 +32,8 @@ public class TheRocketHomeController {
 	 /*
      * This method will be called on form submission, handling POST request
      * It also validates the user input
+     * http://websystique.com/springmvc/spring-4-mvc-form-validation-with-hibernate-jsr-validator-resource-handling-using-annotations/
+     * http://websystique.com/springmvc/spring-mvc-4-angularjs-example/
      */
     @RequestMapping(method = RequestMethod.POST)
     public String saveRegistration( @Valid Contact contact, BindingResult result, ModelMap model){
